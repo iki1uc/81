@@ -2,33 +2,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>81 · QI/IQQ/OCTA · Pipeline 3/6/9/12</title>
+<title>81 · GEO‑Pipeline</title>
 
 <style>
-body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
-h1 { color:#6cf; text-align:center; }
-pre {
-    background:#111;
-    padding:20px;
-    border-left:3px solid #6cf;
-}
+body { background:#000; margin:0; }
+canvas { display:block; margin:auto; background:#111; }
 </style>
 
-<script src="9×9.js"></script>
+<script type="module">
+import { draw81geo } from "./81geo.js";
+import { drawPipeline } from "./81pipeline.js";
+import { drawOCTA } from "./81oxta.js";
 
+window.onload = () => {
+    const c = document.getElementById("canvas81");
+    const x = c.getContext("2d");
+
+    draw81geo(x);      // 81‑Matrix sichtbar
+    drawOCTA(x);       // OCTA sichtbar
+    drawPipeline(x);   // Pipeline sichtbar
+};
+</script>
 </head>
 
 <body>
-
-<h1>81 · QI/IQQ/OCTA · Pipeline 3/6/9/12</h1>
-
-<pre id="out">Lade…</pre>
-
-<script>
-const result = AXIS81.build();
-document.getElementById("out").innerText =
-    JSON.stringify(result, null, 2);
-</script>
-
+<canvas id="canvas81" width="600" height="600"></canvas>
 </body>
 </html>
